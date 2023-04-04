@@ -1,0 +1,16 @@
+@import 'config';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: $primary-font;
+  background-color: $dark;
+  color: $light;
+}
+
+@import 'search';
+@import 'details';

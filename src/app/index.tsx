@@ -1,9 +1,12 @@
+import { Routes, Route } from 'react-router-dom';
+import { MovieSearch, MovieDetails } from '../pages';
 import './sass/main.scss';
 
 export const App = () => {
     return (
-        <main>
-            <h1>Brave Challenge</h1>
-        </main>
+        <Routes>
+            <Route path={'/'} element={<MovieSearch />} />
+            <Route path={'/details'} element={<MovieDetails />} />
+        </Routes>
     )
 }
