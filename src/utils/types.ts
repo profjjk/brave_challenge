@@ -12,5 +12,6 @@ export type Film = {
     species?: string[],
     created?: string,
     edited?: string,
-    url?: string
+    url?: string,
+    image?: string
 }

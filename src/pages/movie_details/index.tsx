@@ -17,10 +17,10 @@ export const MovieDetails = (): ReactElement => {
                     <FontAwesomeIcon icon={faArrowLeftLong} />
                     <p>Back</p>
                 </div>
-                {film ? (
+                {film.title ? (
                     <>
                         <div className={'top-row'}>
-                            <img src={''} alt={film.title} />
+                            <img src={film.image} alt={film.title} />
                             <div>
                                 <h1>{film.title}, Episode {film.episode_id}</h1>
                                 <p>Released {dayjs(film.release_date).format('MMMM D, YYYY') }</p>
