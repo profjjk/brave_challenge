@@ -12,5 +12,14 @@ body {
   color: $light;
 }
 
+button, a {
+  &:hover {
+    cursor: pointer;
+  }
+  &:disabled {
+    cursor: default;
+  }
+}
+
 @import 'search';
 @import 'details';
