@@ -2,4 +2,8 @@ $light: #c8c8c8;
 $dark: #272b30;
 $yellow: #ffe300;
 
-$primary-font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$primary-font: 'Libre Franklin', Helvetica, Arial, sans-serif;
+
+@mixin easeOut {
+  transition: all .3s ease-out;
+}

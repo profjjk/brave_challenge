@@ -1,12 +1,17 @@
-import { ReactElement } from 'react';
+import { ReactElement, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { selectFilm } from '../../redux/filmSlice';
 import { useAppSelector } from '../../redux/hooks';
+import { parseCrawl } from './parseCrawl';
+import { Image } from '../../utils/types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeftLong } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeftLong, faXmark } from '@fortawesome/free-solid-svg-icons';
 import dayjs from 'dayjs';
 
+
+
 export const MovieDetails = (): ReactElement => {
+    const [ photo, setPhoto ] = useState<Image | null>(null);
     const { film } = useAppSelector(selectFilm);
     const navigate = useNavigate();
 
@@ -20,22 +25,41 @@ export const MovieDetails = (): ReactElement => {
                 {film.title ? (
                     <>
                         <div className={'top-row'}>
-                            <img src={film.image} alt={film.title} />
+                            <img
+                                src={film.image}
+                                alt={film.title}
+                                onClick={() => setPhoto({ src: film.image, alt: film.title })}
+                            />
+
                             <div>
-                                <h1>{film.title}, Episode {film.episode_id}</h1>
-                                <p>Released {dayjs(film.release_date).format('MMMM D, YYYY') }</p>
-                                <p>Director: {film.director}</p>
+                                <h1>{film.title}</h1>
+                                <h4>Episode {film.episode_id}</h4>
+                                <p><span>Released:</span> {dayjs(film.release_date).format('MMMM D, YYYY') }</p>
+                                <p><span>Director:</span> {film.director}</p>
                             </div>
                         </div>
 
                         <div>
-                            <p>{film.opening_crawl}</p>
+                            {parseCrawl(film.opening_crawl).map((p: string, index: number) => (
+                                <p className={'crawl'} key={index}>{p}</p>
+                            ))}
                         </div>
                     </>
                 ) : (
                     <h2>No Film</h2>
                 )}
             </div>
+
+            {photo &&
+                <div className={'image-modal'}>
+                    <div className={'modal-content'}>
+                        <div className={'close'} onClick={() => setPhoto(null)}>
+                            <FontAwesomeIcon icon={faXmark} />
+                        </div>
+                        <img src={photo.src} alt={photo.alt} />
+                    </div>
+                </div>
+            }
         </main>
     )
 }

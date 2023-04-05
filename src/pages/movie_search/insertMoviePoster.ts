@@ -1,6 +1,6 @@
 import { Film } from '../../utils/types';
 
-export const insertMoviePoster = (films: Film[]) => {
+export const insertMoviePoster = (films: Film[]): Film[] => {
     return films.map((film: Film) => {
         switch (film.title) {
             case 'The Phantom Menace':
@@ -18,8 +18,11 @@ export const insertMoviePoster = (films: Film[]) => {
             case 'The Empire Strikes Back':
                 film.image = 'images/empire-strikes-back.png'
                 break;
-            default :
+            case 'Return of the Jedi':
                 film.image = 'images/return-of-the-jedi.png'
+                break;
+            default :
+                film.image = 'images/star-wars-generic.png'
                 break;
         }
         return film;
