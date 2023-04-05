@@ -1,9 +1,10 @@
 @import 'config';
 
+// SEARCH/HOME PAGE
 #search-page {
   min-height: 100vh;
   min-width: 100vw;
-  padding: 4rem;
+  padding: 2rem;
 }
 
 #search-form {
@@ -11,7 +12,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 500px;
+  height: fit-content;
+  padding: 1rem 0;
 
   img {
     margin-bottom: 4rem;

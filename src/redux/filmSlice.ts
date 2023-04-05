@@ -12,8 +12,9 @@ export const filmSlice = createSlice({
     }
 });
 
+// export dispatch action
 export const { update } = filmSlice.actions;
-
+// export state (since there is only one value to track)
 export const selectFilm = (state: any) => state.film;
-
+// export reducer to use in store
 export default filmSlice.reducer;

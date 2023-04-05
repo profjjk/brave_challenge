@@ -1,3 +1,6 @@
+@import 'config';
+
+// RESPONSIVE STYLES FOR SMALL SCREENS
 @media screen and (max-width: 767px) {
   #search-page {
     padding: 2rem 1.5rem;
@@ -28,6 +31,8 @@
 
     .nav {
       padding: 0.5rem 1rem;
+      width: 100%;
+      background-color: $dark;
     }
     .top-row {
       display: contents;

@@ -1,0 +1,20 @@
+@import 'config';
+
+// 404 - PAGE NOT FOUND
+#not-found {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+
+  div {
+    display: flex;
+    gap: 1rem;
+    color: $yellow;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

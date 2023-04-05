@@ -17,10 +17,13 @@ export const MovieDetails = (): ReactElement => {
     return (
         <main id={'details-page'}>
             <div id={'film-details'}>
+                {/* navigate back to homepage */}
                 <div className={'nav'} onClick={() => navigate('/')}>
                     <FontAwesomeIcon icon={faArrowLeftLong} />
                     <p>Back</p>
                 </div>
+
+                {/* display film info if one exists, otherwise instruct user to return to homepage */}
                 {film.title ? (
                     <>
                         <div className={'top-row'}>
@@ -39,6 +42,7 @@ export const MovieDetails = (): ReactElement => {
                         </div>
 
                         <div>
+                            {/* convert opening crawl into paragraphs */}
                             {parseCrawl(film.opening_crawl).map((p: string, index: number) => (
                                 <p className={'crawl'} key={index}>{p}</p>
                             ))}
@@ -49,6 +53,7 @@ export const MovieDetails = (): ReactElement => {
                 )}
             </div>
 
+            {/* display a modal with enlarged movie poster */}
             {photo &&
                 <div className={'image-modal'}>
                     <div className={'modal-content'}>

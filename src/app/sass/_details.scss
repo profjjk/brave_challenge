@@ -1,12 +1,13 @@
 @import 'config';
 
+// MOVIE DETAILS PAGE
 #details-page {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   min-width: 100vw;
-  padding: 4rem;
+  padding: 2rem;
 }
 
 #film-details {
@@ -25,6 +26,7 @@
   }
 }
 
+// structure and style film data, except the opening crawl
 .top-row {
   display: grid;
   grid-template-columns: 1fr 3fr;
@@ -65,6 +67,7 @@
   margin-bottom: 1.2rem;
 }
 
+// fix navigation to top of screen on the left side
 .nav {
   font-size: 1.6rem;
   position: fixed;
@@ -81,6 +84,7 @@
   }
 }
 
+// display image-enlargement modal over all other contents
 .image-modal {
   position: fixed;
   z-index: 4;
@@ -94,7 +98,7 @@
   background: rgba(60, 60, 60, 0.8);
 
   img {
-    max-width: 100%;
+    max-height: 500px;
     border: 3px solid $dark;
     border-radius: 10px !important;
   }
@@ -103,6 +107,7 @@
 .modal-content {
   position: relative;
   max-width: 600px;
+  max-height: 80vh;
   padding: 4rem;
   border-radius: 10px;
   background-color: $light;
