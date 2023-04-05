@@ -9,7 +9,7 @@ import { insertMoviePoster } from './insertMoviePoster';
 
 export const MovieSearch = (): ReactElement => {
     const [ input, setInput ] = useState<string>('');
-    const [ films, setFilms ] = useState<Film[]>([]);
+    const [ films, setFilms ] = useState<Film[] | null>([]);
     const [ isLoading, setIsLoading ] = useState<boolean>(false);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
@@ -22,9 +22,14 @@ export const MovieSearch = (): ReactElement => {
         try {
             setIsLoading(true);
             const { data } = await API.getFilms(input);
-            const filmsWithPosters = insertMoviePoster(data.results)
-            setFilms(filmsWithPosters);
+            if (data.results.length < 1) {
+                setFilms(null);
+            } else {
+                const filmsWithPosters = insertMoviePoster(data.results)
+                setFilms(filmsWithPosters);
+            }
         } catch (err: any) {
+            window.alert(err.message)
             console.error(err.message);
         } finally {
             setInput('');
@@ -60,7 +65,7 @@ export const MovieSearch = (): ReactElement => {
             <section id={'search-results'}>
                 {!isLoading ?
                     (
-                        films.map((film: Film, index: number) => (
+                        films && films.map((film: Film, index: number) => (
                             <div className={'film'} key={index} onClick={() => handleFilmSelection(film)}>
                                 <img src={film.image} alt={film.title} />
                                 <h3>{film.title}</h3>
@@ -78,6 +83,7 @@ export const MovieSearch = (): ReactElement => {
                         />
                     )
                 }
+                {!films && <div>No Results</div>}
             </section>
         </main>
     )
