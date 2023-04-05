@@ -46,7 +46,7 @@
 
   p {
     display: grid;
-    grid-template-columns: 85px 150px;
+    grid-template-columns: 85px auto;
     gap: 0.5rem;
     align-items: end;
 

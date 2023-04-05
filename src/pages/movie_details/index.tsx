@@ -9,7 +9,6 @@ import { faArrowLeftLong, faXmark } from '@fortawesome/free-solid-svg-icons';
 import dayjs from 'dayjs';
 
 
-
 export const MovieDetails = (): ReactElement => {
     const [ photo, setPhoto ] = useState<Image | null>(null);
     const { film } = useAppSelector(selectFilm);
@@ -28,7 +27,7 @@ export const MovieDetails = (): ReactElement => {
                             <img
                                 src={film.image}
                                 alt={film.title}
-                                onClick={() => setPhoto({ src: film.image, alt: film.title })}
+                                onClick={() => window.innerWidth > 767 && setPhoto({ src: film.image, alt: film.title })}
                             />
 
                             <div>
