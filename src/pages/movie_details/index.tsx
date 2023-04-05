@@ -45,7 +45,7 @@ export const MovieDetails = (): ReactElement => {
                         </div>
                     </>
                 ) : (
-                    <h2>No Film</h2>
+                    <h2 onClick={() => navigate('/')}>No Film - Return to Search Page</h2>
                 )}
             </div>
 
