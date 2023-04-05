@@ -1,5 +1,6 @@
 import { FormEvent, ReactElement, useState } from 'react';
 import { useNavigate } from 'react-router';
+import { ProgressBar } from 'react-loader-spinner';
 import { useAppDispatch } from '../../redux/hooks';
 import { update } from '../../redux/filmSlice';
 import { API } from '../../utils/api';
@@ -66,7 +67,15 @@ export const MovieSearch = (): ReactElement => {
                             </div>
                         ))
                     ) : (
-                        <div>Loading...</div>
+                        <ProgressBar
+                            height="80"
+                            width="80"
+                            ariaLabel="progress-bar-loading"
+                            wrapperStyle={{}}
+                            wrapperClass="progress-bar-wrapper"
+                            borderColor = '#c8c8c8'
+                            barColor = '#ffe300'
+                        />
                     )
                 }
             </section>
