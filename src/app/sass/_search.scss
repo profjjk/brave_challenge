@@ -1,0 +1,49 @@
+@import 'config';
+
+#search-page {
+  min-height: 100vh;
+  min-width: 100vw;
+  padding: 4rem;
+}
+
+#search-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+
+  form {
+    display: flex;
+    gap: 1rem;
+  }
+
+  input, button {
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+  }
+
+  input {
+    text-align: center;
+    width: 250px;
+  }
+}
+
+#search-results {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.film {
+  padding: 2rem;
+  border: 2px solid $light;
+  border-radius: 10px;
+
+  &:hover {
+    cursor: pointer;
+    background-color: $light;
+    color: $dark;
+  }
+}
