@@ -1,0 +1,47 @@
+@import 'config';
+
+#details-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  min-width: 100vw;
+  padding: 4rem;
+}
+
+#film-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 650px;
+
+  h1 {
+    color: $yellow;
+  }
+
+  img {
+    width: 160px;
+    height: auto;
+    border-radius: 5px;
+  }
+}
+
+.top-row {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav {
+  font-size: 1.6rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 1rem 2rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+
+  &:hover {
+    cursor: pointer;
+  }
+}

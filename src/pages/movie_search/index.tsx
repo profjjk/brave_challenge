@@ -1,4 +1,7 @@
 import { FormEvent, ReactElement, useState } from 'react';
+import { useNavigate } from 'react-router';
+import { useAppDispatch } from '../../redux/hooks';
+import { update } from '../../redux/filmSlice';
 import { API } from '../../utils/api';
 import { Film } from '../../utils/types';
 
@@ -6,6 +9,8 @@ export const MovieSearch = (): ReactElement => {
     const [ input, setInput ] = useState<string>('');
     const [ films, setFilms ] = useState<Film[]>([]);
     const [ isLoading, setIsLoading ] = useState<boolean>(false);
+    const dispatch = useAppDispatch();
+    const navigate = useNavigate();
 
     // EVENT HANDLERS
     const handleSearch = async (e: FormEvent) => {
@@ -22,6 +27,11 @@ export const MovieSearch = (): ReactElement => {
             setInput('');
             setIsLoading(false);
         }
+    }
+
+    const handleFilmSelection = (film: Film) => {
+        dispatch(update(film));
+        navigate('details');
     }
 
     return (
@@ -44,7 +54,7 @@ export const MovieSearch = (): ReactElement => {
                 {!isLoading ?
                     (
                         films.map((film: Film, index: number) => (
-                            <div className={'film'} key={index}>
+                            <div className={'film'} key={index} onClick={() => handleFilmSelection(film)}>
                                 <h3>{film.title}</h3>
                             </div>
                         ))
