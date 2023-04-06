@@ -81,6 +81,8 @@
 
   &:hover {
     cursor: pointer;
+    color: $yellow;
+    @include easeOut;
   }
 }
 

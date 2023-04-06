@@ -5,11 +5,14 @@ import { useAppDispatch } from '../../redux/hooks';
 import { update } from '../../redux/filmSlice';
 import { API } from '../../utils/api';
 import { Film } from '../../utils/types';
+import { getStoredFilms, getStoredInput, setStoredInputAndFilms, clearStorage} from '../../utils/storage';
 import { insertMoviePoster } from './insertMoviePoster';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faX } from '@fortawesome/free-solid-svg-icons';
 
 export const MovieSearch = (): ReactElement => {
-    const [ input, setInput ] = useState<string>('');
-    const [ films, setFilms ] = useState<Film[] | null>([]);
+    const [ input, setInput ] = useState<string>(getStoredInput());
+    const [ films, setFilms ] = useState<Film[] | null >(getStoredFilms());
     const [ isLoading, setIsLoading ] = useState<boolean>(false);
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
@@ -28,10 +31,12 @@ export const MovieSearch = (): ReactElement => {
 
             if (data.results.length < 1) {
                 // inform user if query returned 0 results
+                sessionStorage.clear();
                 setFilms(null);
             } else {
                 // add movie posters to result objects and set then set state
                 const filmsWithPosters = insertMoviePoster(data.results)
+                setStoredInputAndFilms(filmsWithPosters, input);
                 setFilms(filmsWithPosters);
             }
         } catch (err: any) {
@@ -39,8 +44,7 @@ export const MovieSearch = (): ReactElement => {
             window.alert(err.message)
             console.error(err.message);
         } finally {
-            // reset input and remove loading spinner
-            setInput('');
+            // remove loading spinner
             setIsLoading(false);
         }
     }
@@ -64,6 +68,13 @@ export const MovieSearch = (): ReactElement => {
                         placeholder={'Search'}
                         onChange={(e) => setInput(e.target.value)}
                     />
+
+                    {/* reset input, clear session storage and film list */}
+                    {input && <FontAwesomeIcon icon={faX} className={'clear'} onClick={() => {
+                        clearStorage();
+                        setFilms([]);
+                        setInput('');
+                    }}/>}
 
                     {/* disable button if there is no input */}
                     <button type={'submit'} disabled={!input}>

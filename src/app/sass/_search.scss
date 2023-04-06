@@ -24,6 +24,7 @@
   }
 
   form {
+    position: relative;
     display: flex;
     gap: 1rem;
   }
@@ -35,9 +36,30 @@
     font-size: 1.2rem;
   }
 
+  button {
+    &:hover {
+      background-color: $yellow;
+      color: $dark;
+      @include easeOut;
+    }
+  }
+
   input {
     text-align: center;
     width: 250px;
+  }
+
+  .clear {
+    position: absolute;
+    left: 226px;
+    top: 10px;
+    font-size: 1.2em;
+    font-weight: 300;
+    &:hover {
+      cursor: pointer;
+      color: $dark;
+      @include easeOut;
+    }
   }
 }
 
@@ -48,12 +70,13 @@
 }
 
 .film {
-  padding: 1rem;
+  margin-top: 1rem;
+  padding-bottom: 1rem;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 275px;
+  width: 250px;
   text-align: center;
 
   img {
