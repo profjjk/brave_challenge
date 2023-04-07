@@ -69,7 +69,8 @@
 #search-results {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: 1rem;
 
   svg, h3 {
     margin-top: 2rem;
