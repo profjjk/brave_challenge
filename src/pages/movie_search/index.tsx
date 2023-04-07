@@ -8,7 +8,7 @@ import { Film } from '../../utils/types';
 import { getStoredFilms, getStoredInput, setStoredInputAndFilms, clearStorage} from '../../utils/storage';
 import { insertMoviePoster } from './insertMoviePoster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faX } from '@fortawesome/free-solid-svg-icons';
+import { faX, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 export const MovieSearch = (): ReactElement => {
     const [ input, setInput ] = useState<string>(getStoredInput());
@@ -65,7 +65,7 @@ export const MovieSearch = (): ReactElement => {
                 <form onSubmit={handleSearch}>
                     <input
                         value={input}
-                        placeholder={'Enter a movie title'}
+                        placeholder={'Search'}
                         onChange={(e) => setInput(e.target.value)}
                     />
 
@@ -78,7 +78,7 @@ export const MovieSearch = (): ReactElement => {
 
                     {/* disable button if there is no input */}
                     <button type={'submit'} disabled={!input}>
-                        Search
+                        <FontAwesomeIcon icon={faMagnifyingGlass} />
                     </button>
                 </form>
             </section>
@@ -107,7 +107,7 @@ export const MovieSearch = (): ReactElement => {
                 }
 
                 {/* if api call returned 0 results, inform user */}
-                {!films && <h3>No Results</h3>}
+                {!films && !isLoading && <h3>No Results</h3>}
             </section>
         </main>
     )

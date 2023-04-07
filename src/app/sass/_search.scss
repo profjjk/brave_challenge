@@ -37,7 +37,7 @@
   }
 
   button {
-    &:hover {
+    &:hover:enabled {
       background-color: $yellow;
       color: $dark;
       @include easeOut;
