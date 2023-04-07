@@ -51,13 +51,16 @@
 
   .clear {
     position: absolute;
-    left: 226px;
-    top: 10px;
+    left: 218px;
+    top: 2px;
     font-size: 1.2em;
     font-weight: 300;
+    padding: 0.5rem;
+    border-radius: 5px;
     &:hover {
       cursor: pointer;
       color: $dark;
+      background-color: $light;
       @include easeOut;
     }
   }
@@ -67,6 +70,10 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+
+  svg, h3 {
+    margin-top: 2rem;
+  }
 }
 
 .film {

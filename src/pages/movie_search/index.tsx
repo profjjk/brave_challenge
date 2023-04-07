@@ -65,11 +65,11 @@ export const MovieSearch = (): ReactElement => {
                 <form onSubmit={handleSearch}>
                     <input
                         value={input}
-                        placeholder={'Search'}
+                        placeholder={'Enter a movie title'}
                         onChange={(e) => setInput(e.target.value)}
                     />
 
-                    {/* reset input, clear session storage and film list */}
+                    {/* clear session storage, film list, and input */}
                     {input && <FontAwesomeIcon icon={faX} className={'clear'} onClick={() => {
                         clearStorage();
                         setFilms([]);
@@ -78,7 +78,7 @@ export const MovieSearch = (): ReactElement => {
 
                     {/* disable button if there is no input */}
                     <button type={'submit'} disabled={!input}>
-                        Submit
+                        Search
                     </button>
                 </form>
             </section>
@@ -107,7 +107,7 @@ export const MovieSearch = (): ReactElement => {
                 }
 
                 {/* if api call returned 0 results, inform user */}
-                {!films && <div>No Results</div>}
+                {!films && <h3>No Results</h3>}
             </section>
         </main>
     )

@@ -17,7 +17,7 @@ The challenge is to create a single page React application that consumed the Sta
 5. Clean up & comment code for better readability.
 6. Deploy app to Netlify: https://brave-challenge.netlify.app
 
-## The Finished App
-I found the SWAPI.dev API to be very limited in that it only returned text or number results and didn't include any media (it's also missing episodes 7-9). So I modified the search results to include some poster art in order to make the app a little more enjoyable to look at. I also added a little pop-up modal so that the user can view a larger version of the poster art. I made sure to include some error handling so that the user is presented with something informative on the screen should anything go wrong with the HTTP request, if state is lost upon page refresh, if they navigate to a non-existent page, or if the search returned no results.
+I found the SWAPI.dev API to be very limited in that it only returned text or number results and didn't include any media (it's also missing episodes 7-9). So I modified the search results to include some poster art in order to make the app a little more enjoyable to look at. I also added a little pop-up modal so that the user can view a larger version of the poster art. Search input and results are persisted using session storage so the user can return to the search page and select a new film from their previous search. I made sure to include some error handling so that the user is presented with something informative on the screen should anything go wrong with the HTTP request, if state is lost somehow, if they navigate to a non-existent page, or if the search returned no results. Possible next steps for this app would be to develop a full suite of unit tests for the components, and also add radio inputs that would allow the user to select other categories to search on this API such as people, planets, starships, etc.
 
+## The Finished App
 ![SWAPI App](public/images/brave-challenge.gif)
